@@ -29,7 +29,7 @@ export default function ContactForm() {
     event.preventDefault();
 
     const contactForm = event.target;
-    const formData = new FormData(contactForm);
+    const formData: any = new FormData(contactForm);
 
     fetch("/", {
       method: "POST",
@@ -98,11 +98,13 @@ export default function ContactForm() {
           />
 
           <div className="w-full flex items-center justify-between">
-            {errors?.name && <p>{errors.name.message}</p>}
-            {errors?.email && <p>{errors.email.message}</p>}
-            {errors?.company && <p>{errors.company.message}</p>}
-            {errors?.projectType && <p>{errors.projectType.message}</p>}
-            {errors?.comments && <p>{errors.comments.message}</p>}
+            {errors?.name && <p>{errors.name.message?.toString()}</p>}
+            {errors?.email && <p>{errors.email.message?.toString()}</p>}
+            {errors?.company && <p>{errors.company.message?.toString()}</p>}
+            {errors?.projectType && (
+              <p>{errors.projectType.message?.toString()}</p>
+            )}
+            {errors?.comments && <p>{errors.comments.message?.toString()}</p>}
           </div>
 
           <div className="w-full flex items-center justify-between">
