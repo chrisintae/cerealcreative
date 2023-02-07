@@ -7,9 +7,10 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      display: ["Shadows Into Light", "cursive"],
       sans: ["News Cycle", "sans-serif"],
       serif: ["Playfair", "serif"],
+      cursive: ["Shadows Into Light", "cursive"],
+      display: ["Work Sans", "sans-serif"],
     },
     extend: {},
   },
