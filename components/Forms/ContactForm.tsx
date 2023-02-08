@@ -28,9 +28,9 @@ export default function ContactForm() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = ({ values, event }: any) => {
-    const contactForm = event.target;
-    const formData: any = new FormData(contactForm);
+  const onSubmit = ({ data, e }: any) => {
+    e.preventDefault();
+    const formData: any = new FormData(data);
 
     fetch("/", {
       method: "POST",
@@ -39,12 +39,10 @@ export default function ContactForm() {
     })
       .then(() => console.log("Form successfully submitted"))
       .catch((error) => alert(error));
-
-    event.preventDefault();
   };
 
   useEffect(() => {
-    if (formState.isSubmitSuccessful) {
+    if (isSubmitSuccessful) {
       setIsForm(true);
       reset({
         name: "",
@@ -60,7 +58,7 @@ export default function ContactForm() {
         router.push("/");
       }, 5000);
     }
-  }, [formState.isSubmitSuccessful, reset]);
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <>
@@ -76,10 +74,20 @@ export default function ContactForm() {
               industry.
             </p>
             <form
+              id="contact-form"
+              action="/"
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
               className="md:max-w-[420px] mx-auto flex flex-col items-center justify-center gap-8"
               onSubmit={handleSubmit(onSubmit)}
             >
-              <input type="hidden" name="form-name" value="contact" />
+              <input
+                type="hidden"
+                name="form-name"
+                value="General Contact Form"
+              />
               <input
                 className="text-xl w-full border-2 border-gray-300 rounded p-2"
                 {...register("name")}
