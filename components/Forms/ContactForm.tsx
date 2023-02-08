@@ -22,15 +22,13 @@ export default function ContactForm() {
     register,
     handleSubmit,
     reset,
-    formState,
     formState: { errors, isSubmitSuccessful },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = ({ data, e }: any) => {
-    e.preventDefault();
-    const formData: any = new FormData(data);
+  const handleSend = ({ data }: any) => {
+    let formData: any = new FormData(data);
 
     fetch("/", {
       method: "POST",
@@ -81,11 +79,11 @@ export default function ContactForm() {
               data-netlify="true"
               netlify-honeypot="bot-field"
               className="md:max-w-[420px] mx-auto flex flex-col items-center justify-center gap-8"
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={handleSubmit(handleSend)}
             >
               <input
                 type="hidden"
-                name="form-name"
+                name="contact"
                 value="General Contact Form"
               />
               <input
