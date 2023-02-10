@@ -19,8 +19,8 @@ export default function BlogLayout({
           <Wrapper>
             <div className="relative flex">
               <FixedCol>
-                <div className="max-w-384 text-right">
-                  <h1 className="font-high_c font-bold italic text-4xl uppercase">
+                <div className="max-w-384 text-right pb-8">
+                  <h1 className="font-display font-bold italic text-4xl uppercase">
                     highly
                     <br />
                     _conceptual
