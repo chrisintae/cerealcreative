@@ -17,11 +17,7 @@ export const Center = ({ children }: Props) => {
 };
 
 export const DynamicCol = ({ styles, children }: any) => {
-  return (
-    <div className={`relative w-full flex flex-col items-center px-4`}>
-      {children}
-    </div>
-  );
+  return <div className={`relative w-full px-4`}>{children}</div>;
 };
 
 export const FixedCol = ({ children }: Props) => {
